@@ -21,6 +21,9 @@
     "support": {
         "email": "gustavomarini9@gmail.com"
     },
-    "minimum-stability": "stable",
-    "prefer-stable": true
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.0"
+        }
+    }
 }
