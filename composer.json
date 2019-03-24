@@ -1,0 +1,26 @@
+{
+    "name": "Secco2112/rick-and-morty-php",
+    "description": "This is a PHP library for integration with Rick and Morty API.",
+    "type": "library",
+    "require": {
+        "php": ">=7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "RickAndMorty\\": "src/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gustavo Marmentini",
+            "email": "gustavomarini9@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "gustavomarini9@gmail.com"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
