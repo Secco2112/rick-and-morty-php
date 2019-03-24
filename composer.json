@@ -1,5 +1,5 @@
 {
-    "name": "Secco2112/rick-and-morty-php",
+    "name": "secco2112/rick-and-morty-php",
     "description": "This is a PHP library for integration with Rick and Morty API.",
     "type": "library",
     "require": {
