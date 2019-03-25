@@ -21,16 +21,16 @@
 			return self::$instance;
 		}
 
-	    public function character() {
-	    	return new CharacterRequest();
-	    }
+		public function character() {
+			return new CharacterRequest();
+		}
 
-	    public function location() {
-	    	return new LocationRequest();
-	    }
+		public function location() {
+			return new LocationRequest();
+		}
 
-	    public function episode() {
-	    	return new EpisodeRequest();
-	    }
+		public function episode() {
+			return new EpisodeRequest();
+		}
 
 	}
