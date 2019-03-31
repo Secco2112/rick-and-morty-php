@@ -9,6 +9,7 @@
 	class LocationRequest extends AbstractRequest {
 
 		protected $path = "/location/";
+		protected $available_filters = ["name", "type", "dimension"];
 
 		public function __construct() {}
 
@@ -57,13 +58,7 @@
 
 
 		public function filter($args) {
-			$available_filters = ["name", "type", "dimension"];
-
-			foreach ($args as $key => $q) {
-				if(!in_array($key, $available_filters)) {
-					throw new \InvalidArgumentException("'{$key}' is not an available filter.", 1);
-				}
-			}
+			$this->checkAvailableFilters($args);
 
 			$query = http_build_query($args);
 			$request = $this->request("GET", "?{$query}");

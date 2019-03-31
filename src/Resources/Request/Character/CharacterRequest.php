@@ -9,6 +9,26 @@
 	class CharacterRequest extends AbstractRequest {
 
 		protected $path = "/character/";
+		protected $available_filters = [
+				"name",
+				"status" => [
+					"available" => [
+						"alive",
+						"dead",
+						"unknown"
+					]
+				],
+				"species",
+				"type",
+				"gender" => [
+					"available" => [
+						"female",
+						"male",
+						"genderless",
+						"unknown"
+					]
+				]
+			];
 
 		public function __construct() {}
 
@@ -57,13 +77,7 @@
 
 
 		public function filter($args) {
-			$available_filters = ["name", "status", "species", "type", "gender"];
-
-			foreach ($args as $key => $q) {
-				if(!in_array($key, $available_filters)) {
-					throw new \InvalidArgumentException("'{$key}' is not an available filter.", 1);
-				}
-			}
+			$this->checkAvailableFilters($args);
 
 			$query = http_build_query($args);
 			$request = $this->request("GET", "?{$query}");

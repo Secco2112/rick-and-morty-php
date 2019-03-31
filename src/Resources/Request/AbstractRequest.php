@@ -8,9 +8,6 @@
 		const REQUEST_METHOD_GET    = 'GET';
 	    const REQUEST_METHOD_POST   = 'POST';
 	    const REQUEST_METHOD_PUT    = 'PUT';
-	    const REQUEST_METHOD_HEAD   = 'HEAD';
-	    const REQUEST_METHOD_DELETE = 'DELETE';
-	    const REQUEST_METHOD_PATCH  = 'PATCH';
 
 	    const DEFAULT_SERVICE_BASE_URI = 'https://rickandmortyapi.com/api';
 
@@ -95,6 +92,37 @@
 	        }
 	        
 	        return $this;
+	    }
+
+
+	    protected function checkAvailableFilters($args) {
+	    	foreach ($args as $key => $q) {
+				if(in_array($key, $this->available_filters)) {
+					$arg = array_search($key, $this->available_filters);
+				} else if (isset($this->available_filters[$key])) {
+					$arg = $this->available_filters[$key];
+				} else {
+					$arg = false;
+				}
+
+				if($arg === false) {
+					throw new \InvalidArgumentException("'{$key}' is not an available filter.", 1);
+				} else if(is_array($arg)) {
+					if(isset($arg["available"])) {
+						$available_options = $arg["available"];
+						if(!in_array($q, $available_options)) {
+							$options_str = "";
+							foreach ($available_options as $j => $ao) {
+								if($j == count($available_options)-1) $options_str .= " or {$ao}";
+								else if($key == 0) $options_str .= "{$ao}, ";
+								else $options_str .= ", {$ao}";
+							}
+							throw new \InvalidArgumentException("The only options available for filter '{$key}' are '{$options_str}'.", 1);
+						}
+					}
+				}
+			}
+			return $this;
 	    }
 	    
 	}

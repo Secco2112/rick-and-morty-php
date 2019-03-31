@@ -16,7 +16,7 @@
 
 		public function getOrigin() {
 			$origin = $this->origin;
-			$origin_id = explode("/", $origin["url"]);
+			$origin_id = explode("/", $origin->url);
 			$origin_id = $origin_id[count($origin_id)-1];
 
 			$handler = new LocationRequest();
@@ -27,7 +27,7 @@
 
 		public function getLocation() {
 			$location = $this->location;
-			$location_id = explode("/", $location["url"]);
+			$location_id = explode("/", $location->url);
 			$location_id = $location_id[count($location_id)-1];
 
 			$handler = new LocationRequest();
