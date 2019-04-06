@@ -20,5 +20,6 @@
     ],
     "support": {
         "email": "gustavomarini9@gmail.com"
-    }
+    },
+    "minimum-stability": "dev"
 }
